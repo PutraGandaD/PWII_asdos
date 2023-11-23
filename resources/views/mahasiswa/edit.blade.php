@@ -16,28 +16,32 @@
                         @method('patch')
                         <div class="form-group">
                             <label for="npm">Nomor Pokok Mahasiswa</label>
-                            <input type="text" class="form-control" name="npm" placeholder="Nomor Pokok Mahasiswa" value="{{ $mahasiswa->npm }}">
+                            <input type="text" class="form-control" name="npm" placeholder="Nomor Pokok Mahasiswa"
+                                value="{{ $mahasiswa->npm }}">
                             @error('npm')
                                 <label class="text-danger">{{ $message }}</label>
                             @enderror
                         </div>
                         <div class="form-group">
                             <label for="nama">Nama Mahasiswa</label>
-                            <input type="text" class="form-control" name="nama" placeholder="Nama Mahasiswa" value="{{ $mahasiswa->nama }}">
+                            <input type="text" class="form-control" name="nama" placeholder="Nama Mahasiswa"
+                                value="{{ $mahasiswa->nama }}">
                             @error('nama')
                                 <label class="text-danger">{{ $message }}</label>
                             @enderror
                         </div>
                         <div class="form-group">
                             <label for="tempat_lahir">Tempat Lahir</label>
-                            <input type="text" class="form-control" name="tempat_lahir" placeholder="Tempat Lahir" value="{{ $mahasiswa->tempat_lahir }}">
+                            <input type="text" class="form-control" name="tempat_lahir" placeholder="Tempat Lahir"
+                                value="{{ $mahasiswa->tempat_lahir }}">
                             @error('tempat_lahir')
                                 <label class="text-danger">{{ $message }}</label>
                             @enderror
                         </div>
                         <div class="form-group">
                             <label for="tanggal_lahir">Tanggal Lahir</label>
-                            <input type="date" class="form-control" name="tanggal_lahir" placeholder="Tanggal Lahir" value="{{ $mahasiswa->tanggal_lahir }}">
+                            <input type="date" class="form-control" name="tanggal_lahir" placeholder="Tanggal Lahir"
+                                value="{{ $mahasiswa->tanggal_lahir }}">
                             @error('tanggal_lahir')
                                 <label class="text-danger">{{ $message }}</label>
                             @enderror
@@ -54,11 +58,7 @@
                             <select name="prodi_id" class="form-control">
                                 <option value="">Pilih</option>
                                 @foreach ($prodi as $item)
-                                    <option value="{{ $item->id }}"
-                                        @if (old('prodi_id', $mahasiswa->prodi_id) == $item['id'])
-                                            selected
-                                        @endif
-                                        >
+                                    <option value="{{ $item->id }}" @if (old('prodi_id', $mahasiswa->prodi_id) == $item['id']) selected @endif>
                                         {{ $item->nama }}
                                     </option>
                                 @endforeach

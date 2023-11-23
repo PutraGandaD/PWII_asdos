@@ -23,17 +23,13 @@ Route::get('/', function () {
 // Route::get('/fakultas', function () {
 //     return view('fakultas');
 // });
-Route::resource('fakultas', FakultasController::class);
-Route::resource('prodi', ProdiController::class);
-Route::resource('mahasiswa', MahasiswaController::class);
-// Route::get('/prodi', function () {
-//     return view('prodi');
-// });
 
-// Route::get('/mahasiswa', function () {
-//     $data = [
-//         ["npm" => 2226250001, "nama" => "Ahmad"],
-//         ["npm" => 2226250002, "nama" => "Kareem"]
-//     ];
-//     return view('mahasiswa.index')->with('mahasiswa', $data);
-// });
+Route::middleware('auth')->group(function() {
+    Route::resource('fakultas', FakultasController::class);
+    Route::resource('prodi', ProdiController::class);
+    Route::resource('mahasiswa', MahasiswaController::class);
+});
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
