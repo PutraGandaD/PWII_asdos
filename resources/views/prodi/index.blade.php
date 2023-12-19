@@ -10,7 +10,9 @@
                     <p class="card-description">
                         Daftar program studi di Universitas MDP
                     </p>
-                    <a href="{{ route('prodi.create') }}" class="btn btn-primary btn-rounded btn-fw">Tambah</a>
+                    @can('create', App\Prodi::class)
+                        <a href="{{ route('prodi.create') }}" class="btn btn-primary btn-rounded btn-fw">Tambah</a>
+                    @endcan
                     <div class="table-responsive">
                         <table class="table table-hover table-striped">
                             <thead>
@@ -29,12 +31,15 @@
                                             <form method="post" action="{{ route('prodi.destroy', $item->id) }}">
                                                 @method('delete')
                                                 @csrf
-                                                <a href="{{ route('prodi.edit', $item->id) }}"
-                                                    class="btn btn-primary btn-sm">Edit</a>
-
-                                                <button type="submit" class="btn btn-danger btn-sm show_confirm"
-                                                    data-toggle="tooltip" title='Delete'
-                                                    data-nama='{{ $item->nama }}'>Delete</button>
+                                                @can('update', $item)
+                                                    <a href="{{ route('prodi.edit', $item->id) }}"
+                                                        class="btn btn-primary btn-sm">Edit</a>
+                                                @endcan
+                                                @can('delete', $item)
+                                                    <button type="submit" class="btn btn-danger btn-sm show_confirm"
+                                                        data-toggle="tooltip" title='Delete'
+                                                        data-nama='{{ $item->nama }}'>Delete</button>
+                                                @endcan
                                             </form>
                                         </td>
                                     </tr>
