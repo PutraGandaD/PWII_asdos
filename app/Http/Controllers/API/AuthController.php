@@ -39,7 +39,6 @@ class AuthController extends Controller
             } else {
                 $success['token'] = $user->createToken('MDPApp', ['read-fakultas'])->plainTextToken;
             }
-            $success['token'] = $user->createToken('MDPApp')->plainTextToken;
             $success['name'] = $user->name;
             return response()->json($success, 201);
         } else {

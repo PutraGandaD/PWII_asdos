@@ -34,9 +34,9 @@ Route::middleware(['auth:sanctum', 'ability:delete-fakultas'])->delete('fakultas
 Route::get('prodi', [ProdiController::class, 'index']);
 Route::get('mahasiswa', [MahasiswaController::class, 'index']);
 
-Route::post('fakultas', [FakultasController::class, 'store']);
 Route::post('prodi', [ProdiController::class, 'store']);
 Route::post('mahasiswa', [MahasiswaController::class, 'store']);
 
-Route::patch('fakultas/{id}', [FakultasController::class, 'update']);
-Route::delete('fakultas/{id}', [FakultasController::class, 'destroy']);
+// Route::post('fakultas', [FakultasController::class, 'store']);
+// Route::patch('fakultas/{id}', [FakultasController::class, 'update']);
+// Route::delete('fakultas/{id}', [FakultasController::class, 'destroy']);
